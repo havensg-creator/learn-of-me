@@ -1,0 +1,1 @@
+{"name":"learn-of-me","version":"1.0.0","scripts":{"build":"eleventy","start":"eleventy --serve"},"dependencies":{"@11ty/eleventy":"^2.0.1","markdown-it":"^14.0.0"}}

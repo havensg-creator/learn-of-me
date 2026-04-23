@@ -1,0 +1,9 @@
+---
+layout: layout.njk
+title: Episodes
+permalink: /groups/
+---
+<section class="hero" style="padding:3rem 2rem"><h1>Episodes</h1><p class="verse">Each study takes a passage and lays multiple trusted teachers side by side.</p></section>
+<main>
+{% if episodes.published.length > 0 %}{% for ep in episodes.published | reverse %}<div class="episode-card"><h3><a href="/episodes/{{ ep.episode_id }}/">{{ ep.episode_title }}</a></h3><div class="meta"><span class="passage">{{ ep.passage_or_topic }}</span>{% if ep.date_published %} &middot; {{ ep.date_published | dateFormat }}{% endif %}</div><div class="summary">{{ ep.episode_summary }}</div></div>{% endfor %}{% else %}<div class="empty-state"><p>Episodes are on the way.</p></div>{% endif %}
+</main>

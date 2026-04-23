@@ -1,0 +1,15 @@
+---
+layout: layout.njk
+title: Teachers
+permalink: /teachers/
+---
+<section class="hero" style="padding:3rem 2rem"><h1>The Voices</h1><p class="verse">Trusted teachers of the Word, laid side by side so we can learn from them all.</p></section>
+<main>
+{% set grouped = roster | groupBy("calling") %}
+{% if grouped["Expository Teacher"] %}<div class="roster-section"><h2>The Expository Teachers</h2><p class="section-intro">Verse-by-verse men of the Word — pastors, theologians, and commentators who open the Scriptures and let the text speak.</p>
+{% for v in grouped["Expository Teacher"] %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div><div class="links">{% if v.website %}<a href="{{ v.website }}" target="_blank">Website</a>{% endif %}</div></div></div>{% endfor %}</div>{% endif %}
+{% if grouped["Evangelist"] %}<div class="roster-section"><h2>The Evangelists</h2><p class="section-intro">The proclaimers — men whose primary calling was the stadium, the crusade, and the harvest field.</p>
+{% for v in grouped["Evangelist"] %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div><div class="links">{% if v.website %}<a href="{{ v.website }}" target="_blank">Website</a>{% endif %}</div></div></div>{% endfor %}</div>{% endif %}
+{% for calling, voices in grouped %}{% if calling != "Expository Teacher" and calling != "Evangelist" %}<div class="roster-section"><h2>The {{ calling }}s</h2>{% for v in voices %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div></div></div>{% endfor %}</div>{% endif %}{% endfor %}
+{% if roster.length == 0 %}<div class="empty-state"><p>The roster is being prepared.</p></div>{% endif %}
+</main>

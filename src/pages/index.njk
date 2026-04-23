@@ -1,0 +1,15 @@
+---
+layout: layout.njk
+title: Home
+permalink: /
+---
+<section class="hero"><h1>Learn of Me</h1><p class="verse">"Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."<span class="cite">— Matthew 11:29</span></p></section>
+<main>
+<p>Welcome. This is a home for music, teaching, and Bible study — anything that points people to Christ and helps advance His Kingdom.</p>
+<div class="doors">
+<div class="door"><h3>Teachers</h3><p>Meet the voices. Trusted Bible expositors and evangelists whose teachings we study and compare.</p><a href="/teachers/">Meet the voices &rarr;</a></div>
+<div class="door"><h3>Groups</h3><p>Episode archive. Each study lays multiple teachers side by side on the same passage.</p><a href="/groups/">Explore episodes &rarr;</a></div>
+<div class="door"><h3>Music</h3><p>Original songs written and sung to lift up the name of Jesus.</p><a href="/music/">Listen &rarr;</a></div>
+</div>
+{% if episodes.published.length > 0 %}<h2>Latest Episodes</h2>{% for ep in episodes.published | reverse %}{% if loop.index <= 3 %}<div class="episode-card"><h3><a href="/episodes/{{ ep.episode_id }}/">{{ ep.episode_title }}</a></h3><div class="meta"><span class="passage">{{ ep.passage_or_topic }}</span></div><div class="summary">{{ ep.episode_summary }}</div></div>{% endif %}{% endfor %}{% else %}<div class="empty-state"><p>Episodes are on the way. Check back soon.</p></div>{% endif %}
+</main>
