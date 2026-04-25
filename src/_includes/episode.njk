@@ -1,17 +1,115 @@
 ---
 layout: layout.njk
 ---
-<section class="hero" style="padding:3rem 2rem"><h1>{{ episode_title }}</h1><p class="verse">{{ passage_or_topic }}</p></section>
-<main><div class="episode-detail">
-<div class="meta" style="margin-bottom:1.5rem;color:var(--muted);font-size:0.9rem">{% if date_published %}Published {{ date_published | dateFormat }}{% endif %}{% if series %} &middot; Series: {{ series }}{% endif %}</div>
-<div class="teachers-list" style="margin-bottom:1.5rem">{% for t in teachers_compared | split(",") %}<span class="teacher-tag">{{ t }}</span>{% endfor %}</div>
-{% if episode_summary %}<p style="font-size:1.05rem;color:var(--muted);font-style:italic;max-width:700px">{{ episode_summary }}</p>{% endif %}
-{% if audio_overview_url %}<div class="audio-player"><h3 class="section-heading">Listen</h3><audio controls style="width:100%"><source src="{{ audio_overview_url }}" type="audio/mpeg"></audio></div>{% endif %}
-{% if spotify_embed_url %}<div style="margin:1rem 0"><iframe style="border-radius:12px" src="{{ spotify_embed_url }}" width="100%" height="152" frameBorder="0" loading="lazy"></iframe></div>{% endif %}
-{% if the_unity %}<h3 class="section-heading">The Unity</h3><div class="content-block">{{ the_unity | markdown | safe }}</div>{% endif %}
-{% if synthesis_notes %}<h3 class="section-heading">Synthesis</h3><div class="content-block">{{ synthesis_notes | markdown | safe }}</div>{% endif %}
-{% if divergence_notes %}<h3 class="section-heading">Where They Differ</h3><div class="content-block">{{ divergence_notes | markdown | safe }}</div>{% endif %}
-{% if christ_connection %}<h3 class="section-heading">The Christ Connection</h3><div class="content-block">{{ christ_connection | markdown | safe }}</div>{% endif %}
-{% if for_everyman %}<h3 class="section-heading">For Everyman</h3><div class="content-block">{{ for_everyman | markdown | safe }}</div>{% endif %}
-<div style="margin-top:3rem;text-align:center"><a href="/groups/" style="font-weight:600">&larr; All Episodes</a></div>
-</div></main>
+
+<section class="hero" style="padding: 3rem 2rem;">
+  <h1>{{ episode_title }}</h1>
+  <p class="verse">{{ passage_or_topic }}</p>
+</section>
+
+<main>
+  <div class="episode-detail">
+
+    <div class="meta" style="margin-bottom: 1.5rem; color: var(--muted); font-size: 0.9rem;">
+      {% if date_published %}Published {{ date_published | dateFormat }}{% endif %}
+      {% if series %} &middot; Series: {{ series }}{% endif %}
+    </div>
+
+    <div class="teachers-list" style="margin-bottom: 1.5rem;">
+      {% for teacher in teachers_compared | split(",") %}
+      <span class="teacher-tag">{{ teacher }}</span>
+      {% endfor %}
+    </div>
+
+    {% if episode_summary %}
+    <p style="font-size: 1.05rem; color: var(--muted); font-style: italic; max-width: 700px;">{{ episode_summary }}</p>
+    {% endif %}
+
+    {# Audio embed #}
+    {% if audio_overview_url %}
+    <div class="audio-player">
+      <h3 class="section-heading">Listen</h3>
+      <audio controls style="width: 100%;">
+        <source src="{{ audio_overview_url }}" type="audio/mpeg">
+      </audio>
+    </div>
+    {% endif %}
+
+    {% if spotify_embed_url %}
+    <div style="margin: 1rem 0;">
+      <iframe style="border-radius:12px" src="{{ spotify_embed_url }}" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    {% endif %}
+
+    {% if apple_embed_url %}
+    <div style="margin: 1rem 0;">
+      <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="{{ apple_embed_url }}"></iframe>
+    </div>
+    {% endif %}
+
+    {# The Unity #}
+    {% if the_unity %}
+    <h3 class="section-heading">The Unity</h3>
+    <div class="content-block">
+      {{ the_unity | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {# Synthesis #}
+    {% if synthesis_notes %}
+    <h3 class="section-heading">Synthesis</h3>
+    <div class="content-block">
+      {{ synthesis_notes | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {# Divergence #}
+    {% if divergence_notes %}
+    <h3 class="section-heading">Where They Differ</h3>
+    <div class="content-block">
+      {{ divergence_notes | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {# Christ Connection #}
+    {% if christ_connection %}
+    <h3 class="section-heading">The Christ Connection</h3>
+    <div class="content-block">
+      {{ christ_connection | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {# For Everyman #}
+    {% if for_everyman %}
+    <h3 class="section-heading">For Everyman</h3>
+    <div class="content-block">
+      {{ for_everyman | markdown | safe }}
+    </div>
+    {% endif %}
+
+    {# Sources #}
+    {% set hasSource = false %}
+    {% for src in episodes.sources %}
+      {% if src.episode_id == episode_id %}
+        {% if not hasSource %}
+          {% set hasSource = true %}
+    <h3 class="section-heading">Sources</h3>
+    <div class="content-block">
+        {% endif %}
+      <div style="margin-bottom: 0.75rem;">
+        <strong>{{ src.teacher_name }}</strong>
+        {% if src.video_title %} — {{ src.video_title }}{% endif %}
+        {% if src.video_url %}<br><a href="{{ src.video_url }}" target="_blank" rel="noopener">Watch / Listen</a>{% endif %}
+      </div>
+      {% endif %}
+    {% endfor %}
+    {% if hasSource %}
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 3rem; text-align: center;">
+      <a href="/groups/" style="font-weight: 600;">&larr; All Episodes</a>
+    </div>
+
+  </div>
+</main>
