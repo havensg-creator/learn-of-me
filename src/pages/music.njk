@@ -1,7 +1,25 @@
-—---
-layout: layout.njk
-title: Music
-permalink: /music/
 ---
-<section class="hero" style="padding:3rem 2rem"><h1>Music</h1><p class="verse">Original songs written and sung to lift up the name of Jesus.</p></section>
-<main><div class="player"><div class="now-playing">Now Playing: <span id="nowPlayingTitle">Select a song</span></div><audio id="mainPlayer" controls><source src="" type="audio/mpeg"></audio></div><div class="empty-state"><p>Songs are on the way. Check back soon.</p></div></main>
+layout: layout.njk
+title: We Sing Jesus
+permalink: /we-sing-jesus/
+description: Original worship songs written and sung to lift up the name of Jesus.
+---
+
+<section class="hero" style="padding: 3rem 2rem;">
+  <h1>We Sing Jesus</h1>
+  <p class="verse">Original songs written and sung to lift up the name of Jesus — because worship is how we respond to what we learn.</p>
+</section>
+
+<main>
+  <div class="player">
+    <div class="now-playing">Now Playing: <span id="nowPlayingTitle">Select a song</span></div>
+    <audio id="mainPlayer" controls>
+      <source src="" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <div class="empty-state">
+    <p>Songs are on the way. Check back soon.</p>
+  </div>
+</main>
