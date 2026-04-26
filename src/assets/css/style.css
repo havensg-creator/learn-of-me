@@ -1,56 +1,665 @@
+/* ============================================================
+   Learn of Me — Design System
+   Palette: parchment / terracotta / ink
+   Typography: Fraunces (serif display) + Lato (body sans)
+   Feel: small-press book, warm, inviting, serious but welcoming
+   ============================================================ */
+
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap');
-:root{--bg:#f8f5ef;--ink:#2b2218;--muted:#6b5e4e;--accent:#8b5a2b;--accent-dark:#6b4420;--card:#fff;--line:#e7dfd1;--cream:#f3ead8;--gold:#ffd27a}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;font-family:'Lato',sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:16px}
-h1,h2,h3,h4,h5{font-family:'Fraunces',Georgia,serif;line-height:1.3;font-weight:500}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-img{max-width:100%;height:auto}
-header.site{background:var(--ink);color:var(--cream);padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap}
-header.site .brand{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:500}
-header.site .brand a{color:var(--cream);text-decoration:none}
-header.site .tag{font-family:'Fraunces',serif;font-style:italic;font-size:.9rem;color:#d9c9a3;margin-left:.5rem}
-nav.primary a{color:var(--cream);margin-left:1.5rem;text-decoration:none;font-size:.95rem}
-nav.primary a:hover{color:var(--gold)}
-.hero{background:linear-gradient(135deg,#8b5a2b 0%,#5b3a1a 100%);color:#fdf7e8;padding:5rem 2rem;text-align:center}
-.hero h1{font-size:3.2rem;margin:0 0 .5rem;font-weight:300;letter-spacing:1px}
-.hero .verse{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;max-width:640px;margin:0 auto;opacity:.95;line-height:1.8}
-.hero .cite{display:block;margin-top:.5rem;font-size:.9rem;opacity:.8;font-family:'Lato',sans-serif;font-style:normal}
-main{max-width:1000px;margin:0 auto;padding:3rem 2rem}
-h2{font-size:2rem;border-bottom:2px solid var(--accent);padding-bottom:.4rem;margin-top:2.5rem;color:var(--accent-dark)}
-h3{font-size:1.35rem;margin-top:1.8rem;color:var(--accent-dark)}
-.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
-.door{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:2.5rem 1.5rem;text-align:center;transition:transform .15s,box-shadow .15s}
-.door:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(43,34,24,.1)}
-.door h3{margin:0 0 .5rem;font-size:1.5rem}
-.door p{color:var(--muted);font-size:.95rem;margin:0 0 1rem}
-.door a{color:var(--accent);font-weight:700;font-size:.95rem}
-.episode-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:1.5rem;margin-bottom:1.25rem;transition:box-shadow .15s}
-.episode-card:hover{box-shadow:0 4px 12px rgba(43,34,24,.08)}
-.episode-card h3{margin:0 0 .3rem;font-size:1.25rem}
-.episode-card .meta{font-size:.85rem;color:var(--muted);margin-bottom:.5rem}
-.episode-card .passage{font-style:italic}
-.episode-card .summary{font-size:.95rem}
-.teacher-tag{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:.2rem .7rem;font-size:.8rem;color:var(--muted);display:inline-block;margin:.2rem}
-.episode-detail{max-width:800px;margin:0 auto}
-.section-heading{font-size:1.2rem;color:var(--accent-dark);border-bottom:1px solid var(--line);padding-bottom:.3rem;margin-top:2rem}
-.content-block{font-size:1rem;line-height:1.8}
-.audio-player{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0}
-.roster-section{margin-bottom:3rem}
-.section-intro{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--muted);max-width:700px;margin-bottom:1.5rem}
-.voice-card{display:flex;gap:1.25rem;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1.25rem;margin-bottom:1rem;transition:box-shadow .15s}
-.voice-card:hover{box-shadow:0 4px 12px rgba(43,34,24,.08)}
-.photo-placeholder{flex-shrink:0;width:80px;height:80px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.5rem;color:var(--accent)}
-.voice-card .info{flex:1}
-.voice-card h4{font-family:'Fraunces',serif;margin:0 0 .15rem;font-size:1.15rem;color:var(--accent-dark)}
-.voice-card .ministry-name{font-size:.85rem;color:var(--accent);margin-bottom:.4rem}
-.voice-card .bio{font-size:.9rem;color:var(--muted);line-height:1.6}
-.voice-card .links{margin-top:.4rem;font-size:.85rem}
-.voice-card .links a{margin-right:1rem}
-.player{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0}
-.player .now-playing{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--accent-dark);margin-bottom:.5rem}
-.player audio{width:100%;margin-top:.5rem}
-.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);font-style:italic;font-family:'Fraunces',serif}
-footer{background:var(--ink);color:#d9c9a3;text-align:center;padding:2rem;margin-top:4rem;font-size:.9rem}
-footer a{color:var(--gold)}
-@media(max-width:768px){.doors{grid-template-columns:1fr}.voice-card{flex-direction:column;align-items:center;text-align:center}}
-@media(max-width:600px){.hero h1{font-size:2.1rem}header.site{flex-direction:column;gap:.75rem;text-align:center}nav.primary a{margin:0 .6rem}main{padding:2rem 1rem}}
+
+:root {
+  --bg: #f8f5ef;
+  --ink: #2b2218;
+  --muted: #6b5e4e;
+  --accent: #8b5a2b;
+  --accent-dark: #6b4420;
+  --card: #ffffff;
+  --line: #e7dfd1;
+  --hero-start: #8b5a2b;
+  --hero-end: #5b3a1a;
+  --cream: #f3ead8;
+  --gold: #ffd27a;
+  --warm-hover: #fbf6ea;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Fraunces', Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+/* === Header === */
+header.site {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header.site .brand {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+header.site .brand a {
+  color: var(--cream);
+  text-decoration: none;
+}
+
+header.site .tag {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #d9c9a3;
+  margin-left: 0.5rem;
+}
+
+nav.primary a {
+  color: var(--cream);
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+nav.primary a:hover { color: var(--gold); }
+
+/* === Hero === */
+.hero {
+  background: linear-gradient(135deg, var(--hero-start) 0%, var(--hero-end) 100%);
+  color: #fdf7e8;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  margin: 0 0 0.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.hero .verse {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  max-width: 640px;
+  margin: 0 auto;
+  opacity: 0.95;
+  line-height: 1.8;
+}
+
+.hero .cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+}
+
+/* === Main Content === */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+main > p:first-child {
+  font-size: 1.1rem;
+  max-width: 720px;
+  color: var(--muted);
+}
+
+/* === Section Headers === */
+h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-top: 2.5rem;
+  color: var(--accent-dark);
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-top: 1.8rem;
+  color: var(--accent-dark);
+}
+
+/* === Three Doors (Homepage Cards) === */
+.doors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.door {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.door:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(43, 34, 24, 0.1);
+}
+
+.door h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  color: var(--accent-dark);
+}
+
+.door p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+
+.door a {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.door a:hover { text-decoration: underline; }
+
+/* === Generic Cards === */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(43, 34, 24, 0.1);
+}
+
+.card h3 { margin-top: 0; color: var(--accent-dark); }
+.card a { color: var(--accent); font-weight: 600; }
+
+/* === Episode Cards === */
+.episode-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: box-shadow .15s ease;
+}
+
+.episode-card:hover {
+  box-shadow: 0 4px 12px rgba(43, 34, 24, 0.08);
+}
+
+.episode-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+}
+
+.episode-card .meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.episode-card .meta .passage {
+  font-style: italic;
+}
+
+.episode-card .summary {
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.episode-card .teachers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.teacher-tag {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: 'Lato', sans-serif;
+}
+
+/* === Episode Detail Page === */
+.episode-detail {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.episode-detail .passage-ref {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.episode-detail .audio-player {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.episode-detail .audio-player audio {
+  width: 100%;
+}
+
+.episode-detail .section-heading {
+  font-size: 1.2rem;
+  color: var(--accent-dark);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+.episode-detail .content-block {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* === Roster / Teachers Page === */
+.roster-section {
+  margin-bottom: 3rem;
+}
+
+.roster-section .section-intro {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+}
+
+.voice-card {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: box-shadow .15s ease;
+}
+
+.voice-card:hover {
+  box-shadow: 0 4px 12px rgba(43, 34, 24, 0.08);
+}
+
+.voice-card .photo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--line);
+}
+
+.voice-card .photo-placeholder {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.voice-card .info { flex: 1; }
+
+.voice-card h4 {
+  font-family: 'Fraunces', Georgia, serif;
+  margin: 0 0 0.15rem;
+  font-size: 1.15rem;
+  color: var(--accent-dark);
+}
+
+.voice-card .ministry-name {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.voice-card .bio {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.voice-card .links {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.voice-card .links a {
+  margin-right: 1rem;
+  color: var(--accent);
+}
+
+/* === Music Player === */
+.player {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.player .now-playing {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--accent-dark);
+  margin-bottom: 0.5rem;
+}
+
+.player audio { width: 100%; margin-top: 0.5rem; }
+
+.songlist {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.songlist li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background: var(--card);
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.songlist li:hover { background: var(--warm-hover); }
+.songlist li.active {
+  background: #f3e5cb;
+  border-color: var(--accent);
+}
+
+.songlist .title { font-weight: 600; }
+.songlist .meta { color: var(--muted); font-size: 0.9rem; }
+.songlist .play-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* === Category Badges === */
+.category-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  font-size: 0.85rem;
+  font-family: 'Lato', sans-serif;
+  color: #fdf7e8;
+  margin-top: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.category-badge.small {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  margin-top: 0;
+}
+
+/* === Category Filters === */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cat-btn {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.cat-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cat-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* === Episode Audio Badge === */
+.episode-audio-badge {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.episode-card-top {
+  margin-bottom: 0.25rem;
+}
+
+/* === Teacher Video Grid === */
+.teacher-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.video-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow .15s ease;
+}
+
+.video-card:hover {
+  box-shadow: 0 4px 12px rgba(43, 34, 24, 0.08);
+}
+
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-embed .video-link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.video-info {
+  padding: 0.75rem 1rem;
+}
+
+.video-info strong {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  color: var(--accent-dark);
+  font-size: 1rem;
+}
+
+.video-info .video-title {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* === Notebook Link === */
+.notebook-link {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s ease;
+}
+
+.notebook-link:hover {
+  background: var(--accent-dark);
+  text-decoration: none;
+}
+
+/* === Study Block === */
+.study-block {
+  background: var(--card);
+  border-left: 4px solid var(--accent);
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.study-block h3 { margin-top: 0; }
+.study-block .week {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* === Empty State === */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+  font-style: italic;
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+/* === Footer === */
+footer {
+  background: var(--ink);
+  color: #d9c9a3;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+}
+
+footer a { color: var(--gold); }
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .doors {
+    grid-template-columns: 1fr;
+  }
+  .voice-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .voice-card .links {
+    text-align: center;
+  }
+  .teacher-videos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.1rem; }
+  header.site {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+  nav.primary a { margin: 0 0.6rem; }
+  main { padding: 2rem 1rem; }
+}
