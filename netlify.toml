@@ -1,5 +1,28 @@
 [build]
   command = "npx eleventy"
-  publish = "_site"
-[build.environment]
-  NODE_VERSION = "20"
+    publish = "_site"
+
+    [build.environment]
+      NODE_VERSION = "20"
+
+      # Redirect old paths to new ones
+      [[redirects]]
+        from = "/groups/"
+          to = "/episodes/"
+            status = 301
+
+            [[redirects]]
+              from = "/groups"
+                to = "/episodes/"
+                  status = 301
+
+                  [[redirects]]
+                    from = "/music/"
+                      to = "/we-sing-jesus/"
+                        status = 301
+
+                        [[redirects]]
+                          from = "/music"
+                            to = "/we-sing-jesus/"
+                              status = 301
+                              
