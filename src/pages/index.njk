@@ -3,13 +3,65 @@ layout: layout.njk
 title: Home
 permalink: /
 ---
-<section class="hero"><h1>Learn of Me</h1><p class="verse">"Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."<span class="cite">— Matthew 11:29</span></p></section>
+
+<section class="hero">
+  <h1>Learn of Me</h1>
+  <p class="verse">"Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls."
+    <span class="cite">— Matthew 11:29</span>
+  </p>
+</section>
+
 <main>
-<p>Welcome. This is a home for music, teaching, and Bible study — anything that points people to Christ and helps advance His Kingdom.</p>
-<div class="doors">
-<div class="door"><h3>Teachers</h3><p>Meet the voices. Trusted Bible expositors and evangelists whose teachings we study and compare.</p><a href="/teachers/">Meet the voices &rarr;</a></div>
-<div class="door"><h3>Groups</h3><p>Episode archive. Each study lays multiple teachers side by side on the same passage.</p><a href="/groups/">Explore episodes &rarr;</a></div>
-<div class="door"><h3>Music</h3><p>Original songs written and sung to lift up the name of Jesus.</p><a href="/music/">Listen &rarr;</a></div>
-</div>
-{% if episodes.published.length > 0 %}<h2>Latest Episodes</h2>{% for ep in episodes.published | reverse %}{% if loop.index <= 3 %}<div class="episode-card"><h3><a href="/episodes/{{ ep.episode_id }}/">{{ ep.episode_title }}</a></h3><div class="meta"><span class="passage">{{ ep.passage_or_topic }}</span></div><div class="summary">{{ ep.episode_summary }}</div></div>{% endif %}{% endfor %}{% else %}<div class="empty-state"><p>Episodes are on the way. Check back soon.</p></div>{% endif %}
+  <p>Welcome. This is a home for music, teaching, and Bible study — anything that points people to Christ and helps advance His Kingdom. Whether you're here to listen, learn, or study with us, may you find rest here.</p>
+
+  <div class="doors">
+    <div class="door">
+      <h3>Episodes</h3>
+      <p>Questions the Bible answers. Each study takes a passage and lays multiple teachers side by side — listen and learn from them all.</p>
+      <a href="/episodes/">Explore episodes &rarr;</a>
+    </div>
+    <div class="door">
+      <h3>Teachers</h3>
+      <p>Meet the voices. Trusted Bible expositors and evangelists whose teachings we study, compare, and learn from side by side.</p>
+      <a href="/teachers/">Meet the voices &rarr;</a>
+    </div>
+    <div class="door">
+      <h3>We Sing Jesus</h3>
+      <p>Original songs written and sung to lift up the name of Jesus. Listen through the built-in player.</p>
+      <a href="/we-sing-jesus/">Listen &rarr;</a>
+    </div>
+  </div>
+
+  {% if episodes.published.length > 0 %}
+  <h2>Latest Episodes</h2>
+  {% for ep in episodes.published | reverse %}
+  {% if loop.index <= 3 %}
+  <div class="episode-card">
+    <div class="episode-card-top">
+      {% if ep.category %}
+      <span class="category-badge small">{{ ep.category }}</span>
+      {% endif %}
+    </div>
+    <h3><a href="/episodes/{{ ep.slug }}/">{{ ep.question }}</a></h3>
+    <div class="meta">
+      <span class="passage">{{ ep.scripture }}</span>
+    </div>
+    <div class="teachers-list">
+      {% for teacher in ep.teachers | split(",") %}
+      <span class="teacher-tag">{{ teacher }}</span>
+      {% endfor %}
+    </div>
+    {% if ep.audio_url %}
+    <div class="episode-audio-badge">
+      <span>&#9654; Deep dive available</span>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  <div class="empty-state">
+    <p>Episodes are on the way. Check back soon.</p>
+  </div>
+  {% endif %}
 </main>
