@@ -3,23 +3,16 @@ pagination:
   data: episodes.published
   size: 1
   alias: ep
-permalink: /episodes/{{ ep.episode_id }}/
+permalink: /episodes/{{ ep.slug }}/
 eleventyComputed:
-  title: "{{ ep.episode_title }}"
-  episode_id: "{{ ep.episode_id }}"
-  date_published: "{{ ep.date_published }}"
-  passage_or_topic: "{{ ep.passage_or_topic }}"
-  series: "{{ ep.series }}"
-  teachers_compared: "{{ ep.teachers_compared }}"
-  audio_overview_url: "{{ ep.audio_overview_url }}"
-  spotify_embed_url: "{{ ep.spotify_embed_url }}"
-  episode_title: "{{ ep.episode_title }}"
-  episode_summary: "{{ ep.episode_summary }}"
-  the_unity: "{{ ep.the_unity }}"
-  synthesis_notes: "{{ ep.synthesis_notes }}"
-  divergence_notes: "{{ ep.divergence_notes }}"
-  christ_connection: "{{ ep.christ_connection }}"
-  for_everyman: "{{ ep.for_everyman }}"
+  title: "{{ ep.question }}"
+  question: "{{ ep.question }}"
+  slug: "{{ ep.slug }}"
+  scripture: "{{ ep.scripture }}"
+  category: "{{ ep.category }}"
+  teachers: "{{ ep.teachers }}"
+  notebook_url: "{{ ep.notebook_url }}"
+  audio_url: "{{ ep.audio_url }}"
   status: "{{ ep.status }}"
 layout: episode.njk
 ---
