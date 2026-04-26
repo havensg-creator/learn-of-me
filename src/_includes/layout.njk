@@ -1,4 +1,33 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>{{ title }} — Learn of Me</title><link rel="stylesheet" href="/assets/css/style.css"></head><body>
-<header class="site"><div class="brand"><a href="/">Learn of Me</a><span class="tag">— a place to grow</span></div><nav class="primary"><a href="/">Home</a><a href="/teachers/">Teachers</a><a href="/groups/">Episodes</a><a href="/music/">Music</a></nav></header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} — Learn of Me</title>
+  <meta name="description" content="{{ description or 'A place to grow. Music, teaching, and Bible study — anything that points people to Christ and helps advance His Kingdom.' }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="brand">
+    <a href="/">Learn of Me</a>
+    <span class="tag">— a place to grow</span>
+  </div>
+  <nav class="primary">
+    <a href="/">Home</a>
+    <a href="/episodes/">Episodes</a>
+    <a href="/teachers/">Teachers</a>
+    <a href="/we-sing-jesus/">We Sing Jesus</a>
+  </nav>
+</header>
+
 {{ content | safe }}
-<footer><p>Learn of Me &middot; Built to advance the Kingdom &middot; <a href="mailto:havens.g@gmail.com">Contact</a></p><p style="font-size:0.8rem;margin-top:0.5rem;opacity:0.7">"Take my yoke upon you, and learn of me" — Matthew 11:29</p></footer></body></html>
+
+<footer>
+  <p>Learn of Me &middot; Built to advance the Kingdom &middot; <a href="mailto:havens.g@gmail.com">Contact</a></p>
+  <p style="font-size:0.8rem; margin-top:0.5rem; opacity:0.7;">"Take my yoke upon you, and learn of me" — Matthew 11:29</p>
+</footer>
+
+</body>
+</html>
