@@ -24,7 +24,7 @@ layout: layout.njk
     </div>
     {% endif %}
 
-    {# Teacher Sources — embedded YouTube videos #}
+    {# Teacher Sources — link buttons #}
     {% set episodeSources = [] %}
     {% for src in episodes.sources %}
       {% if src.slug == slug %}
@@ -34,33 +34,18 @@ layout: layout.njk
 
     {% if episodeSources.length > 0 %}
     <h3 class="section-heading">Hear from the Teachers</h3>
-    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Watch each teacher's sermon on {{ scripture }} — then listen to the deep dive above to hear how their perspectives come together.</p>
+    <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Listen to each teacher's sermon on {{ scripture }} — then come back for the deep dive above to hear how their perspectives come together.</p>
 
-    <div class="teacher-videos">
+    <div class="teacher-sources">
       {% for src in episodeSources %}
-      <div class="video-card">
-        <div class="video-embed">
-          {% if src.video_url and "youtube.com" in src.video_url %}
-            {% set videoId = src.video_url | replace("https://www.youtube.com/watch?v=", "") | replace("https://youtube.com/watch?v=", "") %}
-            {% set videoId = videoId | replace("https://youtu.be/", "") %}
-            {% if "&" in videoId %}
-              {% set videoId = videoId.split("&")[0] %}
-            {% endif %}
-            <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ src.teacher_name }} on {{ scripture }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-          {% elif src.video_url and "youtu.be" in src.video_url %}
-            {% set videoId = src.video_url | replace("https://youtu.be/", "") %}
-            {% if "?" in videoId %}
-              {% set videoId = videoId.split("?")[0] %}
-            {% endif %}
-            <iframe src="https://www.youtube.com/embed/{{ videoId }}" title="{{ src.teacher_name }} on {{ scripture }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-          {% else %}
-            <a href="{{ src.video_url }}" target="_blank" rel="noopener" class="video-link">Watch {{ src.teacher_name }} &rarr;</a>
-          {% endif %}
-        </div>
-        <div class="video-info">
+      <div class="source-card">
+        <div class="source-info">
           <strong>{{ src.teacher_name }}</strong>
-          {% if src.video_title %}<span class="video-title">{{ src.video_title }}</span>{% endif %}
+          {% if src.video_title %}<span class="source-title">{{ src.video_title }}</span>{% endif %}
         </div>
+        {% if src.video_url %}
+        <a href="{{ src.video_url }}" target="_blank" rel="noopener" class="teaching-btn">Go to Teaching &rarr;</a>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
