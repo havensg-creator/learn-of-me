@@ -13,14 +13,13 @@ layout: layout.njk
 <main>
   <div class="episode-detail">
 
-    {# Deep Dive Audio — the main event #}
+    {# Deep Dive Audio — Buzzsprout embed player #}
     {% if audio_url %}
     <div class="audio-player">
       <h3 class="section-heading">Deep Dive</h3>
       <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem;">Listen to a synthesized deep dive exploring how multiple teachers handle this passage.</p>
-      <audio controls style="width: 100%;">
-        <source src="{{ audio_url }}" type="audio/mpeg">
-      </audio>
+      <div id="buzzsprout-player-{{ audio_url }}"></div>
+      <script src="https://www.buzzsprout.com/2613528/episodes/{{ audio_url }}.js?container_id=buzzsprout-player-{{ audio_url }}&player=small" type="text/javascript" charset="utf-8"></script>
     </div>
     {% endif %}
 
