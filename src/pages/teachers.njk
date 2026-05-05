@@ -2,14 +2,87 @@
 layout: layout.njk
 title: Teachers
 permalink: /teachers/
+description: Meet the voices — trusted Bible expositors and evangelists whose teachings we study and compare.
 ---
-<section class="hero" style="padding:3rem 2rem"><h1>The Voices</h1><p class="verse">Trusted teachers of the Word, laid side by side so we can learn from them all.</p></section>
+
+<section class="hero" style="padding: 3rem 2rem;">
+  <h1>The Voices</h1>
+  <p class="verse">Trusted teachers of the Word, each with a distinct calling and perspective — laid side by side so we can learn from them all.</p>
+</section>
+
 <main>
-{% set grouped = roster | groupBy("calling") %}
-{% if grouped["Expository Teacher"] %}<div class="roster-section"><h2>The Expository Teachers</h2><p class="section-intro">Verse-by-verse men of the Word — pastors, theologians, and commentators who open the Scriptures and let the text speak.</p>
-{% for v in grouped["Expository Teacher"] %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div><div class="links">{% if v.website %}<a href="{{ v.website }}" target="_blank">Website</a>{% endif %}</div></div></div>{% endfor %}</div>{% endif %}
-{% if grouped["Evangelist"] %}<div class="roster-section"><h2>The Evangelists</h2><p class="section-intro">The proclaimers — men whose primary calling was the stadium, the crusade, and the harvest field.</p>
-{% for v in grouped["Evangelist"] %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div><div class="links">{% if v.website %}<a href="{{ v.website }}" target="_blank">Website</a>{% endif %}</div></div></div>{% endfor %}</div>{% endif %}
-{% for calling, voices in grouped %}{% if calling != "Expository Teacher" and calling != "Evangelist" %}<div class="roster-section"><h2>The {{ calling }}s</h2>{% for v in voices %}<div class="voice-card"><div class="photo-placeholder">{{ v.name | first }}</div><div class="info"><h4>{{ v.name }}</h4><div class="ministry-name">{{ v.ministry }}</div><div class="bio">{{ v.bio }}</div></div></div>{% endfor %}</div>{% endif %}{% endfor %}
-{% if roster.length == 0 %}<div class="empty-state"><p>The roster is being prepared.</p></div>{% endif %}
+  {% set grouped = roster | groupBy("calling") %}
+
+  {% if grouped["Expository Teacher"] %}
+  <div class="roster-section">
+    <h2>The Expository Teachers</h2>
+    <p class="section-intro">These are verse-by-verse men of the Word — pastors, theologians, and commentators who open the Scriptures and let the text speak. They represent different traditions, different eras, and different temperaments, but they share a common conviction: the Bible means what it says, and the teacher's job is to get out of the way and let it.</p>
+
+    {% for voice in grouped["Expository Teacher"] %}
+    <div class="voice-card">
+      <img class="photo" src="{{ voice.name | teacherImage }}" alt="{{ voice.name }}">
+      <div class="info">
+        <h4>{{ voice.name }}</h4>
+        <div class="ministry-name">{{ voice.ministry }}</div>
+        <div class="bio">{{ voice.bio }}</div>
+        <div class="links">
+          {% if voice.website %}<a href="{{ voice.website }}" target="_blank" rel="noopener">Website</a>{% endif %}
+          {% if voice.youtube_channel_url %}<a href="{{ voice.youtube_channel_url }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if grouped["Evangelist"] %}
+  <div class="roster-section">
+    <h2>The Evangelists</h2>
+    <p class="section-intro">These are the proclaimers — men whose primary calling was not the classroom or the commentary desk but the stadium, the crusade, and the harvest field. They preach to the unconverted with an urgency that expository teachers rarely match, and when they handle the same texts, the emphasis shifts from explanation to invitation.</p>
+
+    {% for voice in grouped["Evangelist"] %}
+    <div class="voice-card">
+      <img class="photo" src="{{ voice.name | teacherImage }}" alt="{{ voice.name }}">
+      <div class="info">
+        <h4>{{ voice.name }}</h4>
+        <div class="ministry-name">{{ voice.ministry }}</div>
+        <div class="bio">{{ voice.bio }}</div>
+        <div class="links">
+          {% if voice.website %}<a href="{{ voice.website }}" target="_blank" rel="noopener">Website</a>{% endif %}
+          {% if voice.youtube_channel_url %}<a href="{{ voice.youtube_channel_url }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# Auto-render any future calling categories (Pastor, Apologist, etc.) #}
+  {% for calling, voices in grouped %}
+    {% if calling != "Expository Teacher" and calling != "Evangelist" %}
+    <div class="roster-section">
+      <h2>The {{ calling }}s</h2>
+      {% for voice in voices %}
+      <div class="voice-card">
+        <img class="photo" src="{{ voice.name | teacherImage }}" alt="{{ voice.name }}">
+        <div class="info">
+          <h4>{{ voice.name }}</h4>
+          <div class="ministry-name">{{ voice.ministry }}</div>
+          <div class="bio">{{ voice.bio }}</div>
+          <div class="links">
+            {% if voice.website %}<a href="{{ voice.website }}" target="_blank" rel="noopener">Website</a>{% endif %}
+            {% if voice.youtube_channel_url %}<a href="{{ voice.youtube_channel_url }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if roster.length == 0 %}
+  <div class="empty-state">
+    <p>The roster is being prepared. Check back soon.</p>
+  </div>
+  {% endif %}
 </main>
