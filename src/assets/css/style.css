@@ -510,6 +510,29 @@ h3 {
   color: var(--accent);
 }
 
+.episode-audio-badge.coming-soon-badge {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.episode-detail .audio-player.coming-soon {
+  background: transparent;
+  border: 1px dashed var(--line);
+}
+
+.coming-soon-message {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.coming-soon-icon {
+  display: inline-block;
+  margin-right: 0.4rem;
+  opacity: 0.8;
+}
+
 .episode-card-top {
   margin-bottom: 0.25rem;
 }
